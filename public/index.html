@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image to 3D</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.185.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.185.0/examples/jsm/"
+      }
+    }
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Image to 3D Converter</h1>
+        <p class="subtitle">
+            Upload an image and convert it into a 3D Model.
+        </p>
+    </header>
+
+    <div class="container">
+
+        <!-- Left: upload + controls -->
+        <div class="left-panel">
+
+            <div class="card">
+
+                <h2>Upload</h2>
+
+                <!-- Upload Box -->
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/png, image/jpeg, image/webp"
+                        hidden>
+
+                    <button id="uploadBtn">
+                        Upload Image
+                    </button>
+
+                    <p id="fileName">
+                        No Image Selected
+                    </p>
+
+                </div>
+
+                <!-- Image Preview -->
+                <img
+                    id="previewImage"
+                    src=""
+                    alt="Preview">
+
+                <!-- Convert -->
+                <button id="convertBtn">
+                    Convert To 3D
+                </button>
+
+                <!-- Loading -->
+                <div id="loading">
+                    <div class="loader"></div>
+                    <p id="loadingText">
+                        Generating 3D Model...
+                    </p>
+                </div>
+
+                <!-- Download -->
+                <a
+                    id="downloadBtn"
+                    download>
+                    Download GLB
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Right: 3D viewer -->
+        <div class="right-panel">
+
+            <div class="viewer-card">
+
+                <h2>Preview</h2>
+
+                <div id="viewer"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="viewer.js"></script>
+    <script type="module" src="app.js"></script>
+
+</body>
+
+</html>

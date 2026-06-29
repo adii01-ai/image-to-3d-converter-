@@ -1,0 +1,184 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+}
+
+header{
+    padding:25px;
+    text-align:center;
+}
+
+header h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+header p{
+    color:#cbd5e1;
+}
+
+.container{
+    width:95%;
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:400px 1fr;
+    gap:25px;
+    padding-bottom:40px;
+}
+
+.left-panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.card,
+.viewer-card{
+    background:#1e293b;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.card h2,
+.viewer-card h2{
+    margin-bottom:20px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+#previewImage{
+    width:100%;
+    border-radius:10px;
+    display:none;
+    margin-top:15px;
+}
+
+#fileName{
+    margin-top:15px;
+    text-align:center;
+    color:#cbd5e1;
+}
+
+#loading{
+    display:none;
+    text-align:center;
+    margin-top:25px;
+}
+
+.loader{
+    width:55px;
+    height:55px;
+    border:6px solid #334155;
+    border-top:6px solid #3b82f6;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:auto;
+    margin-bottom:15px;
+}
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+#downloadBtn{
+    display:none;
+    margin-top:20px;
+    background:#16a34a;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+#downloadBtn:hover{
+
+    background:#15803d;
+
+}
+
+.right-panel{
+
+    display:flex;
+
+}
+
+.viewer-card{
+
+    width:100%;
+
+}
+
+#viewer{
+
+    width:100%;
+
+    height:700px;
+
+    background:#111827;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.container{
+
+    grid-template-columns:1fr;
+
+}
+
+#viewer{
+
+    height:450px;
+
+}
+
+header h1{
+
+    font-size:30px;
+
+}
+
+}
