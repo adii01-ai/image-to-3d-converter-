@@ -2,24 +2,7 @@
 
 Upload an image → Neural4D generates a 3D model from it → the server
 downloads the result locally → the browser shows it in a Three.js viewer
-and lets you download the `.glb`.
-
-## What was actually broken
-
-- `services/neural4d.js` was a **0-byte empty file**.
-- `routes/upload.js` required `../services/tripo`, a file that **doesn't
-  exist** in this project — every request to `/upload` (and in some setups,
-  every nodemon restart) crashed or 500'd because of this missing module.
-- `public/app.js` uploaded the image and got `modelURL` back from the
-  server, then just alerted "Image uploaded successfully!" and threw the
-  result away — it never called `viewer.js`'s `loadModel()` or enabled the
-  download button.
-- `public/index.html` didn't have the `header` / `.left-panel` /
-  `.right-panel` / `.viewer-card` wrapper elements that `style.css`
-  expects, so the two-column layout never applied. The loading spinner
-  also used class `spinner` while the CSS only defines `.loader`.
-
-Every file below has been rewritten so they're consistent with each other.
+and lets you download the `.glb`
 
 ## How it works now
 
@@ -99,3 +82,16 @@ Open http://localhost:3000
   instead of the default glb — it isn't wired into the UI yet.
 - If `/upload` returns an error, check the terminal running the server —
   the real error message from Neural4D is logged there.
+
+
+ ## ⚠️ Important
+
+You only need to add your **Neural4D API Key** in the `.env` file.
+
+**Cloudinary** and **Tripo** are **not required** for this project.
+
+After generating a `.glb` model, open the following online GLB viewer to preview your 3D model:
+
+https://www.meshy.ai/3d-tools/online-viewer/glb
+
+Simply drag and drop your generated `.glb` file into the viewer to inspect and interact with the 3D model.
